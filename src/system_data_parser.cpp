@@ -105,7 +105,8 @@ void SystemDataParser::parseHeaderRobotWareVersion()
   auto begin{std::sregex_iterator(version->name().begin(), version->name().end(), regex)};
 
   // Parse the numbers.
-  if(std::distance(begin, std::sregex_iterator()) == 3)
+  // RWS 6 has 4 parts, RWS 7 only has 3 parts.
+  if(std::distance(begin, std::sregex_iterator()) >= 2)
   {
     unsigned int value{0};
     unsigned int counter{0};
